@@ -16,7 +16,7 @@ public class ValidacaoDocumento {
 		/**
 		 * Validador de CPF
 		 */
-		System.out.println("Digite seu cpf :");
+		System.out.println("Digite seu cpf:");
 		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);	//Scaner para a digitação do user.
 		String cpf = scanner.nextLine();			// User digita seu CPF
