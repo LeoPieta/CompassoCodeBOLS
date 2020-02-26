@@ -56,7 +56,8 @@ public class ValidacaoDocumento {
 		 */
 		System.out.println("Digite seu titulo de Eleitor: ");
 		TituloEleitoralValidator validadorTitulo = new TituloEleitoralValidator();
-		String tituloEleitor = scanner.nextLine();
+		String tituloEleitor = scanner.nextLine(); // usuario digita seu titulo de eleitor
+		
 		
 		try {
 			validadorTitulo.assertValid(tituloEleitor);
