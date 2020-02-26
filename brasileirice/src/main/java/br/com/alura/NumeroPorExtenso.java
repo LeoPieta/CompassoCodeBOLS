@@ -1,6 +1,6 @@
 package br.com.alura;
 
-//import java.math.BigDecimal;
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 import br.com.caelum.stella.inwords.FormatoDeReal;
@@ -13,10 +13,8 @@ public class NumeroPorExtenso {
 		NumericToWordsConverter conversor = new NumericToWordsConverter(new FormatoDeReal());
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Digite um valor e o sistema retornara o valor por extenso: ");
-		System.out.println(conversor.toWords(scanner.nextDouble()));
-		
-//		BigDecimal valor = new BigDecimal(scanner.nextDouble());  // metodo utilizado no video da alura
-//		System.out.println(conversor.toWords(valor.doubleValue()));
+		BigDecimal valor = new BigDecimal(scanner.nextDouble());  //utilizado no lugar do double, por conta de sua precisão
+		System.out.println(conversor.toWords(valor.doubleValue()));
 		}
 		catch(Exception e){System.out.println("Erro Encontrado :" + e );}
 		
