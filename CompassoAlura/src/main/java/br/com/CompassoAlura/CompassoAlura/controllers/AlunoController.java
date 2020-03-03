@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.com.CompassoAlura.CompassoAlura.models.Aluno;
@@ -28,7 +29,7 @@ public class AlunoController {
 	
 	@PostMapping("/aluno/salvar")
 	public String salvar(@ModelAttribute Aluno aluno) {
-		System.out.println("Aluno para salvar: "+ aluno);
+		System.out.println("Aluno para salvar: "+ aluno);https://cursos.alura.com.br/course/criando-uma-webapp-com-java-e-mongodb/task/28039/next
 		repository.salvar(aluno);
 		return "redirect:/";
 	}
@@ -39,5 +40,15 @@ public class AlunoController {
 		List<Aluno> alunos = repository.obterTodosAlunos();
 		model.addAttribute("alunos", alunos);
 		return "aluno/listar";
+	}
+	
+	@GetMapping("/aluno/visualizar/{id}")
+	public String visualizar(@PathVariable String id, Model model){
+		
+		Aluno aluno = repository.obterAlunoPor(id);
+		
+		model.addAttribute("aluno", aluno);
+		
+		return "aluno/visualizar";
 	}
 }
