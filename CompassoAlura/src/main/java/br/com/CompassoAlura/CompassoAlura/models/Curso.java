@@ -3,7 +3,11 @@ package br.com.CompassoAlura.CompassoAlura.models;
 public class Curso {
 	
 	private String nome;
-
+	
+	public Curso() {
+		
+	}
+	
 	public Curso(String nome) {
 		this.nome = nome;
 	}

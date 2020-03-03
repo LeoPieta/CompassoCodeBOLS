@@ -37,7 +37,7 @@ public class AlunoController {
 	@GetMapping("/aluno/listar")
 	public String listar(Model model){
 		List<Aluno> alunos = repository.obterTodosAlunos();
-		model.addAllAttributes(alunos);
+		model.addAttribute("alunos", alunos);
 		return "aluno/listar";
 	}
 }
