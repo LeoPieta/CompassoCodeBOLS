@@ -7,6 +7,8 @@ import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.mongodb.client.model.geojson.Point;
+
 public class Aluno {
 	
 	private ObjectId id;
@@ -21,7 +23,7 @@ public class Aluno {
 	
 	private List<Habilidade> habilidades;
 	
-//	private Contato contato;
+	private Contato contato;
 
 	public ObjectId getId() {
 		return id;
@@ -97,12 +99,13 @@ public class Aluno {
 		
 	}
 
-//	public Contato getContato() {
-//		return contato;
-//	}
-//
-//	public void setContato(Contato contato) {
-//		this.contato = contato;
-//	}
-//	
+
+	public Contato getContato() {
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
+	}
+	
 }

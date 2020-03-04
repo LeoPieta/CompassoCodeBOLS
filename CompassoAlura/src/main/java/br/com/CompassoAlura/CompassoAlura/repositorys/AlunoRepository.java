@@ -16,15 +16,12 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
-//import com.mongodb.client.model.Indexes;
-//import com.mongodb.client.model.geojson.Point;
-//import com.mongodb.client.model.geojson.Position;
+import com.mongodb.client.model.Indexes;
+import com.mongodb.client.model.geojson.Point;
+import com.mongodb.client.model.geojson.Position;
 
 import br.com.CompassoAlura.CompassoAlura.codecs.AlunoCodec;
 import br.com.CompassoAlura.CompassoAlura.models.Aluno;
-
-//import br.com.alura.escolalura.codecs.AlunoCodec;
-//import br.com.alura.escolalura.models.Aluno;
 
 @Repository
 public class AlunoRepository {
@@ -89,7 +86,7 @@ public class AlunoRepository {
 		MongoCollection<Aluno> alunoCollection = this.bancaDeDados.getCollection("alunos" , Aluno.class);
 		MongoCursor<Aluno> resultados = alunoCollection.find(Filters.eq("nome", nome), Aluno.class).iterator();
 		List<Aluno> alunos = popularAlunos(resultados);
-		
+	
 		fecharConexao();
 		
 		return alunos;
@@ -128,22 +125,22 @@ public class AlunoRepository {
 		
 	}
 
-//	public List<Aluno> pesquisaPorGeolocalizacao(Aluno aluno) {
-//		criarConexao();
-//		MongoCollection<Aluno> alunoCollection = this.bancaDeDados.getCollection("alunos", Aluno.class);
-//		
-//		alunoCollection.createIndex(Indexes.geo2dsphere("contato"));
-//		
-//		List<Double> coordinates = aluno.getContato().getCoordinates();
-//	Point pontoReferencia = new Point(new Position(coordinates.get(0), coordinates.get(1)));
-//	
-//		MongoCursor<Aluno> resultados = alunoCollection.find(Filters.nearSphere("contato", pontoReferencia, 2000.0, 0.0)).limit(2).skip(1).iterator();
-//		
-//		List<Aluno> alunos = popularAlunos(resultados);
-//		
-//		fecharConexao();
-//		return alunos;
-//	}
+	public List<Aluno> pesquisaPorGeolocalizacao(Aluno aluno) {
+		criarConexao();
+		MongoCollection<Aluno> alunoCollection = this.bancaDeDados.getCollection("alunos", Aluno.class);
+		
+		alunoCollection.createIndex(Indexes.geo2dsphere("contato"));
+		
+		List<Double> coordinates = aluno.getContato().getCoordinates();
+	Point pontoReferencia = new Point(new Position(coordinates.get(0), coordinates.get(1)));
+	
+		MongoCursor<Aluno> resultados = alunoCollection.find(Filters.nearSphere("contato", pontoReferencia, 2000.0, 0.0)).limit(2).skip(1).iterator();
+		
+		List<Aluno> alunos = popularAlunos(resultados);
+		
+		fecharConexao();
+		return alunos;
+	}
 	
 	
 	
