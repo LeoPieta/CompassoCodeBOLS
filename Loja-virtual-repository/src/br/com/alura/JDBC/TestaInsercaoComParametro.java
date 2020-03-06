@@ -1,46 +1,52 @@
 package br.com.alura.JDBC;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import java.sql.*;
-import java.util.Scanner;
+import br.com.alura.JDBC.factory.ConnectionFactory;
 
+public class TestaInsercaoComParametro {
 
-public class TestaInsercaoComParametro {	
 	public static void main(String[] args) throws SQLException {
-		Conexão conexão = new Conexão();
-		conexão.AbrirConexão();
-		Scanner scanner = new Scanner(System.in);
-		conexão.getConnection().setAutoCommit(false);
-		try{
-			PreparedStatement stm = conexão.getConnection()
-				.prepareStatement("INSERT INTO PRODUTO (nome, descricao) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
-		
-		int i=0;
-		while(i!=1) {
-		System.out.println("Digite o nome e a descricao do produto que sera inserido no sistema.");
-		AdicionarVariavel(scanner.next(), scanner.next(), stm);
-		System.out.println("Deseja inserir mais um item ao sistema? Caso sim digite 0, caso contrario digite 1");
-		i=scanner.nextInt();
+		ConnectionFactory factory = new ConnectionFactory();
+		try(Connection connection = factory.recuperarConexao()){
+
+			connection.setAutoCommit(false);
+
+			try (PreparedStatement stm = 
+					connection.prepareStatement("INSERT INTO PRODUTO (nome, descricao) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
+					){
+				adicionarVariavel("SmartTV", "45 polegadas", stm);
+				adicionarVariavel("Radio", "Radio de bateria", stm);
+
+				connection.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("ROLLBACK EXECUTADO");
+				connection.rollback();
+			}
 		}
-		conexão.getConnection().commit();
-		} catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("ROLLBACK EXECUTADO");
-			conexão.getConnection().rollback();
-		}
-		conexão.FecharConexão();
-		scanner.close();
 	}
 
-	private static void AdicionarVariavel(String nome, String descricao, PreparedStatement stm) throws SQLException {
+	private static void adicionarVariavel(String nome, String descricao, PreparedStatement stm) throws SQLException {
 		stm.setString(1, nome);
 		stm.setString(2, descricao);
+
+		if(nome.equals("Radio")) {
+			throw new RuntimeException("Não foi possível adicionar o produto");
+		}
+
 		stm.execute();
-		
-		ResultSet rst = stm.getGeneratedKeys();
-		while(rst.next()) {
-			int id = rst.getInt(1);
-			System.out.println("O ID criado foi : " + id);
-		
+
+		try(ResultSet rst = stm.getGeneratedKeys()){
+			while(rst.next()) {
+				Integer id = rst.getInt(1);
+				System.out.println("O id criado foi: " + id);
+			}
 		}
 	}
 }
+
+

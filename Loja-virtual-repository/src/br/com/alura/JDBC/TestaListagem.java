@@ -1,32 +1,31 @@
 package br.com.alura.JDBC;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import br.com.alura.JDBC.factory.ConnectionFactory;
 
 public class TestaListagem {
+
 	public static void main(String[] args) throws SQLException {
-		
-		Conexão conexão = new Conexão();
-		conexão.AbrirConexão();
-		
-		PreparedStatement stm = conexão.getConnection().prepareStatement("SELECT ID, NOME, DESCRICAO FROM PRODUTO");
-		boolean resultado = stm.execute();
-		System.out.println(resultado);
+
+		ConnectionFactory connectionFactory = new ConnectionFactory();
+		Connection connection = connectionFactory.recuperarConexao();
+
+		PreparedStatement stm = connection.prepareStatement("SELECT ID, NOME, DESCRICAO FROM PRODUTO");
+		stm.execute();
 		ResultSet rst = stm.getResultSet();
-		
-		
 		while(rst.next()) {
-			int id = rst.getInt("ID");
+			Integer id = rst.getInt("ID");
 			String nome = rst.getString("NOME");
 			String descricao = rst.getString("DESCRICAO");
-			System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=");
-			System.out.println("-=--=-= ID: "+id);
-			System.out.println("-=--=-= NOME: "+nome);
-			System.out.println("-=--=-= DESCRICAO: "+descricao);
-			System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==--=");
+			System.out.println(id);
+			System.out.println(nome);
+			System.out.println(descricao);
 		}
-		
-		
-		conexão.FecharConexão();
-		
+		rst.close();
+		stm.close();
+		connection.close();
 	}
 }

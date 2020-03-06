@@ -1,22 +1,29 @@
 package br.com.alura.JDBC;
-
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import br.com.alura.JDBC.factory.ConnectionFactory;
+
 public class TestaInsercao {
+
 	public static void main(String[] args) throws SQLException {
-		Conexão conexão = new Conexão();
-		conexão.AbrirConexão();
-		
-		Statement stm = conexão.getConnection().createStatement();
-		stm.execute("INSERT INTO PRODUTO (nome, descricao) VALUES ('Mouse', 'Mouse sem fio')", Statement.RETURN_GENERATED_KEYS);
+
+		ConnectionFactory factory = new ConnectionFactory();
+		Connection connection = factory.recuperarConexao();
+
+		Statement stm = connection.createStatement();
+		stm.execute("INSERT INTO PRODUTO (nome, descricao) VALUES ('Mouse', 'Mouse sem fio')"
+				, Statement.RETURN_GENERATED_KEYS);
+
 		ResultSet rst = stm.getGeneratedKeys();
 		while(rst.next()) {
-			int id = rst.getInt(1);
-			System.out.println("O ID criado foi : " + id);
-			
-		conexão.FecharConexão();
+			Integer id = rst.getInt(1);
+			System.out.println("O id criado foi: " + id);
 		}
+		rst.close();
+		stm.close();
+		connection.close();
 	}
 }
