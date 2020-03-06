@@ -8,8 +8,8 @@ public class TestaListagem {
 		Conexão conexão = new Conexão();
 		conexão.AbrirConexão();
 		
-		Statement stm = conexão.getConnection().createStatement();
-		boolean resultado = stm.execute("SELECT ID, NOME, DESCRICAO FROM PRODUTO");
+		PreparedStatement stm = conexão.getConnection().prepareStatement("SELECT ID, NOME, DESCRICAO FROM PRODUTO");
+		boolean resultado = stm.execute();
 		System.out.println(resultado);
 		ResultSet rst = stm.getResultSet();
 		

@@ -15,6 +15,8 @@ public class TestaInsercao {
 		while(rst.next()) {
 			int id = rst.getInt(1);
 			System.out.println("O ID criado foi : " + id);
+			
+		conexão.FecharConexão();
 		}
 	}
 }
