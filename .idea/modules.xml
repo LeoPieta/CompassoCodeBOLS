@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Compassito/Compassito.iml" filepath="$PROJECT_DIR$/Compassito/Compassito.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CompassitoAPI/CompassitoAPI.iml" filepath="$PROJECT_DIR$/CompassitoAPI/CompassitoAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CompassoAlura/CompassoAlura.iml" filepath="$PROJECT_DIR$/CompassoAlura/CompassoAlura.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Financas/Financas.iml" filepath="$PROJECT_DIR$/Financas/Financas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaMongo/JavaMongo.iml" filepath="$PROJECT_DIR$/JavaMongo/JavaMongo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java_3/Java_3.iml" filepath="$PROJECT_DIR$/Java_3/Java_3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Servers/Servers.iml" filepath="$PROJECT_DIR$/Servers/Servers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/brasileirice/brasileirice.iml" filepath="$PROJECT_DIR$/brasileirice/brasileirice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Herdado/bytebank-herdado.iml" filepath="$PROJECT_DIR$/Herdado/bytebank-herdado.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HerdadoConta/bytebank-herdado-conta.iml" filepath="$PROJECT_DIR$/HerdadoConta/bytebank-herdado-conta.iml" />
+      <module fileurl="file://$PROJECT_DIR$/escolalura/escolalura.iml" filepath="$PROJECT_DIR$/escolalura/escolalura.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Loja-virtual-repository/loja-virtual-repository.iml" filepath="$PROJECT_DIR$/Loja-virtual-repository/loja-virtual-repository.iml" />
+    </modules>
+  </component>
+</project>

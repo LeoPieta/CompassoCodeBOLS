@@ -2,6 +2,9 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\Usuario\Desktop\Murilo Couto\CCoin-Compasso\ItensApi"/>
+			<item value="C:\Users\Usuario\Desktop\Compasso\Aulas\JPA 2\projeto-jpa-2"/>
+			<item value="E:\Eclipse code\financas_Oficial"/>
 			<item value="E:\Eclipse code\CompassoAlura"/>
 			<item value="E:\Eclipse code\escolalura"/>
 			<item value="E:\Eclipse code\brasileirice"/>
@@ -21,6 +24,8 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="E:\Eclipse code\escolalura"/>
+			<item value="E:\Eclipse code"/>
 			<item value="E:\Eclipse code\CompassoAlura\pom.xml"/>
 			<item value="E:\Eclipse code\brasileirice"/>
 		</list>
@@ -64,12 +69,15 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="Compasso"/>
 			<item value="br.com.compassoteste"/>
 			<item value="br.com.alura"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Compassito"/>
+			<item value="Localhost"/>
 			<item value="JavaMongo"/>
 		</list>
 		<list key="projectNameTemplate">
